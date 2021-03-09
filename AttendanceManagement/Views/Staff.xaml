@@ -1,0 +1,55 @@
+﻿<Window x:Class="AttendanceManagement.Views.Staff"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AttendanceManagement.Views"
+        mc:Ignorable="d"
+        Title="Staff" Height="666" Width="989.667">
+
+    <Grid Loaded="Grid_Loaded" Background="#007bff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="232,33,0,0" TextWrapping="Wrap" Text="Classe C#" VerticalAlignment="Top" FontSize="24" FontFamily="Roboto" Foreground="#FFFEFEFE"/>
+        <Rectangle Fill="white" HorizontalAlignment="Left" Height="545" Margin="215,85,0,0" VerticalAlignment="Top" Width="750" RadiusX="19" RadiusY="19" Visibility="Visible"/>
+        <Rectangle Fill="#007bff" HorizontalAlignment="Left" Height="450" Margin="260,145,0,0" VerticalAlignment="Top" Width="665" RadiusX="10" RadiusY="10" Visibility="Visible"/>
+        <TextBlock HorizontalAlignment="Left" Margin="570,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontFamily="Roboto" Text="Chercher par le nom :" Foreground="#FFFEFEFE" Width="210"/>
+        <Button x:Name="btn_ajouter_ab" Content="Ajouter absence" HorizontalAlignment="Left" Margin="445,100,0,0" VerticalAlignment="Top" Width="140" Height="35" Background="#FF007BFF" Click="btn_ajouter_ab_Click"/>
+        <Button x:Name="afficher_les_absents" Content="Afficher les absents" HorizontalAlignment="Left" Margin="265,100,0,0" VerticalAlignment="Top" Width="160" Height="35" Background="#FF007BFF" Click="afficher_les_absents_Click"/>
+        <DataGrid x:Name="dg" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="395" Margin="265,195,0,0" VerticalAlignment="Top" Width="655" Visibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="50" Header="#" Binding="{Binding [User Id]}"></DataGridTextColumn>
+                <DataGridTextColumn Width="50" Header="name " Binding="{Binding [Full Name]}"></DataGridTextColumn>
+                <DataGridTextColumn Width="130" Header="email" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Width="100" Header="classe" Binding="{Binding [Class Name]}"></DataGridTextColumn>
+
+                <!--<DataGridTextColumn Width="110" Header="Phone" Binding="{Binding phone}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="110" Header="Adresse" Binding="{Binding adresse}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="110" Header="Formation" Binding="{Binding idFormation}"></DataGridTextColumn>-->
+                <!--<DataGridTextColumn Width="110" Header="Salle" Binding="{Binding salle}"></DataGridTextColumn>-->
+                <DataGridTemplateColumn x:Name="abs_temp" Header="Absent">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton GroupName="button" x:Name="check_absent" IsChecked="{Binding absent, Mode=TwoWay}" Checked="check_absent_checked" Unchecked="check_absent_unchecked" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="late_temp"  Header="Retard">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton GroupName="button" x:Name="check_retard"  IsChecked="{Binding retard, Mode=TwoWay}" Checked="check_retard_checked" Unchecked="check_retard_unchecked" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="dg1" HorizontalAlignment="Left" Height="395" Margin="265,195,0,0" VerticalAlignment="Top" Width="655" Background="white" Visibility="Hidden"/>
+        <TextBox x:Name="text_search" HorizontalAlignment="Left" Height="30" Margin="750,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" TextChanged="text_search_TextChanged"/>
+        <ComboBox x:Name="comb_classes" HorizontalAlignment="Left" Margin="270,155,0,0" VerticalAlignment="Top" Width="200" Height="30" SelectionChanged="comb_classes_SelectionChanged"/>
+
+
+    </Grid>
+</Window>
